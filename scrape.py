@@ -15,7 +15,8 @@ for tr in root.cssselect("tr"):
     tds = tr.cssselect("td")
     if len(tds)==7:
 
-        casedate = tds[0].text_content() # @TODO parse to ISO 8601
+        rawdate = tds[0].text_content()
+        casedate = rawdate[6:] + '-' + rawdate[:2] + '-' + rawdate[3:5]
 
         data = {
             'filing_date' : casedate,
